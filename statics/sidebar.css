@@ -1,0 +1,121 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    min-height: 100vh;
+    background-color: #FBFBFB;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    background-color: #485935;
+    color: white;
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.sidebar .profile {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.sidebar .avatar {
+    width: 80px;
+    height: 80px;
+    background-color: #CADBB7;
+    border-radius: 50%;
+    margin: 0 auto 0.8rem;
+}
+
+.sidebar .profile h3 {
+    color: #FBFBFB;
+}
+
+.sidebar .status {
+    color: #CADBB7;
+    font-size: 0.9rem;
+}
+
+.nav-links {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #FBFBFB;
+    padding: 0.75rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-radius: 8px;
+    transition: background 0.3s;
+}
+
+.nav-links a:hover {
+    background-color: #93A267;
+}
+
+/* Content */
+.content {
+    flex: 1;
+    padding: 2rem;
+}
+
+/* Hamburger & Mobile Header */
+.mobile-header {
+    display: none;
+    width: 100%;
+    background-color: #485935;
+    color: white;
+    padding: 1rem;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.hamburger {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+    }
+
+    .mobile-header {
+        display: flex;
+    }
+
+    .sidebar {
+        position: absolute;
+        top: 60px;
+        left: 0;
+        transform: translateX(-100%);
+        z-index: 1000;
+        height: calc(100% - 60px);
+        width: 250px;
+    }
+
+    .sidebar.show {
+        transform: translateX(0);
+    }
+
+    .content {
+        padding: 1rem;
+    }
+}

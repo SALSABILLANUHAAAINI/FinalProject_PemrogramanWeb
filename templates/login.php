@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Login Admin</title>
-    <link rel="stylesheet" href="../statics/style.css">
+    <link rel="stylesheet" href="../statics/login.css">
 </head>
 <body class="login-body">
     <div class="container">

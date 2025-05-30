@@ -1,0 +1,175 @@
+/* Warna dasar */
+:root {
+    --dark-green: #485935;
+    --olive-green: #93A267;
+    --mint-green: #CADBB7;
+    --light-bg: #FBFBFB;
+    --white: #ffffff;
+}
+
+/* Reset dasar */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI", sans-serif;
+    background-color: var(--light-bg);
+    color: var(--dark-green);
+    display: flex;
+}
+
+/* Mobile header (jika sidebar disembunyikan) */
+.mobile-header {
+    display: none;
+}
+
+/* Konten utama */
+.content {
+    margin-left: 2rem;
+    padding: 2rem;
+    flex: 1;
+    min-height: 100vh;
+    background-color: var(--light-bg);
+    box-sizing: border-box;
+}
+
+/* Form pencarian */
+form {
+    margin-bottom: 1.5rem;
+}
+
+input[type="text"] {
+    padding: 8px 12px;
+    border: 1px solid var(--olive-green);
+    border-radius: 6px;
+    font-size: 14px;
+    width: 200px;
+}
+
+button[type="submit"] {
+    background-color: var(--dark-green);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    margin-left: 5px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: var(--olive-green);
+}
+
+.btn-tambah {
+    display: inline-block;
+    margin: 1rem 0;
+    padding: 10px 15px;
+    background-color: #16a34a;
+    /* Hijau tua */
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background-color 0.2s ease;
+}
+
+.btn-tambah i {
+    margin-right: 6px;
+}
+
+.btn-tambah:hover {
+    background-color: #15803d;
+    /* Hijau lebih gelap saat hover */
+}
+
+
+/* Tabel */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    background-color: var(--white);
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+table th,
+table td {
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+table th {
+    background-color: var(--mint-green);
+    color: var(--dark-green);
+}
+
+table tr:hover {
+    background-color: #f0f5f0;
+}
+
+/* Link Aksi */
+a {
+    color: var(--dark-green);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: var(--olive-green);
+}
+
+/* Pagination */
+div>a {
+    margin-right: 8px;
+    color: var(--dark-green);
+    font-weight: 500;
+}
+
+div>a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive: untuk mobile */
+@media screen and (max-width: 768px) {
+    .content {
+        margin-left: 0;
+        padding: 1rem;
+    }
+
+    .mobile-header {
+        display: flex;
+        align-items: center;
+        padding: 1rem;
+        background-color: var(--dark-green);
+        color: white;
+    }
+
+    .hamburger {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 24px;
+        margin-right: 1rem;
+    }
+
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: -260px;
+        width: 250px;
+        height: 100%;
+        background-color: var(--dark-green);
+        color: white;
+        transition: left 0.3s ease;
+        z-index: 1000;
+    }
+
+    .sidebar.show {
+        left: 0;
+    }
+}
