@@ -1,0 +1,108 @@
+:root {
+    --hijau-tua: #485935;
+    --hijau: #93A267;
+    --hijau-muda: #CADBB7;
+    --putih: #FBFBFB;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: var(--hijau-tua);
+}
+
+.mobile-header {
+    display: none;
+}
+
+.main-content {
+    padding: 30px;
+}
+
+h2 {
+    color: var(--hijau-tua);
+    font-size: 26px;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.riwayat-nav {
+    margin-bottom: 20px;
+}
+
+.riwayat-nav a {
+    color: var(--hijau);
+    text-decoration: none;
+    margin-right: 15px;
+    font-weight: 600;
+    padding: 5px 10px;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+}
+
+.riwayat-nav a:hover,
+.riwayat-nav a.active {
+    background-color: var(--hijau-muda);
+    color: var(--hijau-tua);
+    border-bottom: 2px solid var(--hijau-tua);
+}
+
+/* Glassmorphism wrapper */
+.table-wrapper {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    margin-top: 20px;
+    overflow-x: auto;
+}
+
+/* Table styles */
+.riwayat-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: transparent;
+    border-radius: 12px;
+}
+
+.riwayat-table th {
+    background: rgba(255, 255, 255, 0.3);
+    color: var(--hijau-tua);
+    text-align: left;
+    padding: 12px;
+    font-size: 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.riwayat-table td {
+    background: rgba(255, 255, 255, 0.15);
+    color: var(--hijau-tua);
+    padding: 12px;
+    font-size: 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.riwayat-table tr:hover td {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+/* Rounded corners */
+.riwayat-table tr:first-child th:first-child {
+    border-top-left-radius: 12px;
+}
+
+.riwayat-table tr:first-child th:last-child {
+    border-top-right-radius: 12px;
+}
+
+.riwayat-table tr:last-child td:first-child {
+    border-bottom-left-radius: 12px;
+}
+
+.riwayat-table tr:last-child td:last-child {
+    border-bottom-right-radius: 12px;
+}
+
