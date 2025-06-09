@@ -1,11 +1,11 @@
 <?php
-session_start();
-if (!isset($_SESSION['admin'])) {
-    header("Location: login.php");
-}
-include '../config/koneksi.php';
-$id = $_GET['id'];
-$data = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM barang WHERE id = $id"));
+    session_start();
+    if (!isset($_SESSION['admin'])) {
+        header("Location: login.php");
+    }
+    include '../config/koneksi.php';
+    $id = $_GET['id'];
+    $data = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM barang WHERE id = $id"));
 ?>
 <!DOCTYPE html>
 <html>
@@ -27,3 +27,4 @@ $data = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM barang WHERE id = 
     </form>
 </body>
 </html>
+edit_barang.php
