@@ -1,70 +1,71 @@
-/* Reset dan font dasar */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-body.login-body {
-    background-color: #FBFBFB;
+body,
+html {
+    font-family: 'Poppins', sans-serif;
     height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    overflow: hidden;
+    background-image: url('../media/rakbuku.jpg');
+    /* Gambar jadi background */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
-/* Card login */
 .container {
-    background-color: #FFFFFF;
-    padding: 2rem 2.5rem;
-    border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(72, 89, 53, 0.2);
-    /* #485935 transparan */
+    display: flex;
+    height: 100vh;
     width: 100%;
-    max-width: 400px;
-    border: 1px solid #CADBB7;
 }
 
-/* Judul */
-.title {
+/* Kiri: Form Login */
+.left {
+    flex: 1;
+    background-color: #CADBB7;
+    /* semi transparan putih */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top-right-radius: 60px;
+    border-bottom-right-radius: 60px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+}
+
+.login-box {
+    width: 80%;
+    max-width: 350px;
+}
+
+.login-box h2 {
+    margin-bottom: 20px;
+    color: #3e4b2d;
     text-align: center;
-    margin-bottom: 1.5rem;
-    color: #485935;
-    font-size: 1.8rem;
 }
 
-/* Label */
-form label {
+.login-box label {
     display: block;
-    margin-top: 1rem;
-    margin-bottom: 0.5rem;
-    font-weight: bold;
-    color: #485935;
+    margin-top: 10px;
+    color: #3e4b2d;
+    font-weight: 500;
 }
 
-/* Input */
-form input[type="text"],
-form input[type="password"] {
+.login-box input {
     width: 100%;
-    padding: 0.7rem;
-    border: 1px solid #CADBB7;
-    border-radius: 8px;
-    background-color: #FBFBFB;
-    color: #485935;
-    outline: none;
-    transition: border-color 0.3s, background-color 0.3s;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    color: #3e4b2d;
 }
 
-form input:focus {
-    border-color: #93A267;
-    background-color: #FFFFFF;
-}
-
-/* Link */
 .link {
     display: inline-block;
-    margin-top: 1rem;
+    margin-top: 10px;
     font-size: 0.9rem;
     color: #93A267;
     text-decoration: none;
@@ -74,21 +75,24 @@ form input:focus {
     text-decoration: underline;
 }
 
-/* Tombol */
-.button {
-    display: block;
+.login-box button {
     width: 100%;
-    padding: 0.75rem;
-    margin-top: 1.5rem;
-    background-color: #485935;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: #4b5d30;
     color: white;
-    font-weight: bold;
     border: none;
-    border-radius: 8px;
+    border-radius: 10px;
+    font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.3s;
 }
 
-.button:hover {
+.login-box button:hover {
     background-color: #93A267;
+    color: #3e4b2d;
+}
+
+/* Kanan: Kosong tapi tetap ada untuk layout */
+.right {
+    flex: 1;
 }
