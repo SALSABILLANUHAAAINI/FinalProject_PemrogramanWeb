@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Tambah User</title>
-    <link rel="stylesheet" href="../statics/style.css">
+    <link rel="stylesheet" href="../statics/register.css">
 </head>
 <body class="login-body">
     <div class="container">
