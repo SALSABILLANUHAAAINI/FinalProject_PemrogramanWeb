@@ -24,7 +24,6 @@ body {
 
 /* Konten utama */
 .content {
-    margin-left: 2rem;
     padding: 2rem;
     flex: 1;
     min-height: 100vh;
@@ -64,7 +63,7 @@ button[type="submit"]:hover {
     display: inline-block;
     margin: 1rem 0;
     padding: 10px 15px;
-    background-color: #16a34a;
+    background-color: #485935;
     /* Hijau tua */
     color: white;
     text-decoration: none;
@@ -78,7 +77,7 @@ button[type="submit"]:hover {
 }
 
 .btn-tambah:hover {
-    background-color: #15803d;
+    background-color: #93A267;
     /* Hijau lebih gelap saat hover */
 }
 
@@ -134,42 +133,63 @@ div>a:hover {
     text-decoration: underline;
 }
 
-/* Responsive: untuk mobile */
-@media screen and (max-width: 768px) {
-    .content {
-        margin-left: 0;
-        padding: 1rem;
-    }
+/* ===== Modal Tambah & Edit Barang ===== */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
 
-    .mobile-header {
-        display: flex;
-        align-items: center;
-        padding: 1rem;
-        background-color: var(--dark-green);
-        color: white;
-    }
+.modal-content {
+    background-color: var(--white);
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 400px;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
 
-    .hamburger {
-        background: none;
-        border: none;
-        color: white;
-        font-size: 24px;
-        margin-right: 1rem;
-    }
+.modal-content input[type="text"],
+.modal-content input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid var(--olive-green);
+    border-radius: 6px;
+    font-size: 14px;
+}
 
-    .sidebar {
-        position: fixed;
-        top: 0;
-        left: -260px;
-        width: 250px;
-        height: 100%;
-        background-color: var(--dark-green);
-        color: white;
-        transition: left 0.3s ease;
-        z-index: 1000;
-    }
+.modal-content button {
+    background-color: var(--dark-green);
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+}
 
-    .sidebar.show {
-        left: 0;
-    }
+.modal-content button:hover {
+    background-color: var(--olive-green);
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #555;
+}
+
+.close:hover {
+    color: #000;
 }
