@@ -52,6 +52,7 @@ ob_start();
                     <input type="checkbox" class="cb-pinjam" id="cb_<?= $row['id'] ?>" name="barang_id[]" value="<?= $row['id'] ?>">
                     <strong><?= htmlspecialchars($row['nama_barang']) ?></strong>
                 </label>
+                <img src="../uploads/<?= htmlspecialchars($row['gambar']) ?>" alt="Gambar <?= htmlspecialchars($row['nama_barang']) ?>" class="gambar-barang">
                 <p>Stok: <?= $row['stok'] ?></p>
                 <p>Kondisi: <?= htmlspecialchars($row['kondisi']) ?></p>
                 <div class="input-wrapper">

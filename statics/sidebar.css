@@ -85,7 +85,8 @@ body {
 }
 
 .nav-links a.active {
-  background-color: #fefae0; /* Warna latar aktif */
+  background-color: #fefae0;
+  /* Warna latar aktif */
   color: #485935;
   font-weight: bold;
   border-top-left-radius: 20px;
@@ -95,6 +96,7 @@ body {
   padding-right: 0;
   margin-right: -1rem;
 }
+
 
 
 /* Header atas (untuk mobile) */

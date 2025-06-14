@@ -18,6 +18,15 @@ $riwayat = mysqli_query($conn, "
     ORDER BY t.tanggal DESC
     LIMIT 6
 ");
+
+if (isset($_GET['edit'])) {
+    $id_edit = $_GET['edit'];
+    $barang_edit = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM barang WHERE id = $id_edit"));
+
+    $stok_awal = (int)$barang_edit['stok_awal'];
+    $stok_sisa = (int)$barang_edit['stok'];
+    $dipinjam = $stok_awal - $stok_sisa;
+}
 ?>
 
 <!DOCTYPE html>

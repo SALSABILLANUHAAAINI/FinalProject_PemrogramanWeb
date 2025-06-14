@@ -44,6 +44,7 @@ ob_start(); // Mulai buffering
                     <input type="checkbox" class="cb-barang" id="cb_<?= $row['id'] ?>" name="barang_id[]" value="<?= $row['id'] ?>">
                     <strong><?= htmlspecialchars($row['nama_barang']) ?></strong>
                 </label>
+                <img src="../uploads/<?= htmlspecialchars($row['gambar']) ?>" alt="Gambar <?= htmlspecialchars($row['nama_barang']) ?>" class="gambar-barang">
                 <div>Stok: <?= $row['stok'] ?></div>
                 <div>Kondisi: <?= htmlspecialchars($row['kondisi']) ?></div>
                 <div class="input-wrapper">

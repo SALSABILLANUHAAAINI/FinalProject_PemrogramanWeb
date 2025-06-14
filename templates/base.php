@@ -11,15 +11,10 @@ if (session_status() == PHP_SESSION_NONE) session_start();
   <link rel="stylesheet" href="../statics/dashboard.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-  <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-    }
-  </style>
-  <?php if (isset($extra_css)) echo $extra_css; ?>
 </head>
 <body>
 
+<!-- Header Mobile -->
 <div class="mobile-header">
   <button id="toggleSidebar" class="hamburger">
     <i class="fas fa-bars"></i>
@@ -51,7 +46,7 @@ if (session_status() == PHP_SESSION_NONE) session_start();
       <a href="riwayat.php" class="<?= $current_page == 'riwayat.php' ? 'active' : '' ?>">
         <i class="fas fa-history"></i> Riwayat
       </a>
-      <a href="../logout.php" class="<?= $current_page == 'logout.php' ? 'active' : '' ?>">
+      <a href="#" onclick="confirmLogout(event)">
         <i class="fas fa-sign-out-alt"></i> Logout
       </a>
     </nav>
@@ -69,12 +64,23 @@ if (session_status() == PHP_SESSION_NONE) session_start();
   </div>
 </div>
 
+<!-- Script -->
 <script>
+  // Sidebar Toggle
   const toggleBtn = document.getElementById('toggleSidebar');
   const sidebar = document.getElementById('sidebar');
   toggleBtn.addEventListener('click', () => {
     sidebar.classList.toggle('show');
   });
+
+  // Konfirmasi Logout
+  function confirmLogout(event) {
+    event.preventDefault();
+    const confirmAction = confirm("Apakah Anda yakin ingin logout?");
+    if (confirmAction) {
+      window.location.href = "../logout.php";
+    }
+  }
 </script>
 
 </body>

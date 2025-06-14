@@ -68,6 +68,15 @@ input[disabled] {
     gap: 0.5rem;
 }
 
+.card img.gambar-barang {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 8px;
+    margin: 0.5rem auto;
+}
+
 .input-wrapper {
     margin-top: 0.5rem;
 }
@@ -87,6 +96,7 @@ button[type="submit"] {
 button[type="submit"]:hover {
     background-color: #374429;
 }
+
 
 .error-box {
     color: #a94442;
