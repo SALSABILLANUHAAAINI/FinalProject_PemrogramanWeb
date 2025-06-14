@@ -2,41 +2,26 @@
 include '../config/koneksi.php';
 
 $id = $_POST['id'];
-$nama = mysqli_real_escape_string($conn, $_POST['nama']);
+$nama = $_POST['nama'];
 $stok = (int) $_POST['stok'];
-$kondisi = mysqli_real_escape_string($conn, $_POST['kondisi']);
+$stok_awal = (int) $_POST['stok_awal'];
+$kondisi = $_POST['kondisi'];
 
-$gambarBaru = $_FILES['gambar']['name'];
-$tmpGambar = $_FILES['gambar']['tmp_name'];
+$new_stok_awal = $stok > $stok_awal ? $stok : $stok_awal;
 
-if ($gambarBaru) {
-    $namaGambarBaru = time() . '_' . basename($gambarBaru);
-    $tujuan = "../uploads/$namaGambarBaru";
+$gambar = '';
+if (!empty($_FILES['gambar']['name'])) {
+    $gambar = time() . '_' . basename($_FILES['gambar']['name']);
+    $upload_path = '../uploads/' . $gambar;
+    move_uploaded_file($_FILES['gambar']['tmp_name'], $upload_path);
 
-    if (move_uploaded_file($tmpGambar, $tujuan)) {
-        // Ambil nama gambar lama
-        $old = mysqli_fetch_assoc(mysqli_query($conn, "SELECT gambar FROM barang WHERE id = $id"));
-        $gambarLama = $old['gambar'];
-
-        // Hapus gambar lama (jika ada dan bukan default)
-        if ($gambarLama && file_exists("../uploads/$gambarLama")) {
-            unlink("../uploads/$gambarLama");
-        }
-
-        // Update dengan gambar baru
-        $query = "UPDATE barang SET nama_barang='$nama', stok=$stok, kondisi='$kondisi', gambar='$namaGambarBaru' WHERE id=$id";
-    } else {
-        echo "Gagal upload gambar";
-        exit;
-    }
+    // Update semua termasuk gambar
+    $sql = "UPDATE barang SET nama_barang='$nama', stok=$stok, stok_awal=$new_stok_awal, kondisi='$kondisi', gambar='$gambar' WHERE id=$id";
 } else {
-    // Tidak ada gambar baru diupload
-    $query = "UPDATE barang SET nama_barang='$nama', stok=$stok, kondisi='$kondisi' WHERE id=$id";
+    // Update tanpa ubah gambar
+    $sql = "UPDATE barang SET nama_barang='$nama', stok=$stok, stok_awal=$new_stok_awal, kondisi='$kondisi' WHERE id=$id";
 }
 
-if (mysqli_query($conn, $query)) {
-    header("Location: ../admin/dataBarang.php");
-} else {
-    echo "Gagal update data!";
-}
-?>
+mysqli_query($conn, $sql);
+
+header("Location: ../templates/dataBarang.php?update=1");
