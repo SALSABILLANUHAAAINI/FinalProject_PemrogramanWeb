@@ -10,7 +10,7 @@
 
     if ($data && $password == $data['password']) {
         $_SESSION['admin'] = $data['username'];
-        header("Location: ../templates/dashboard.php");
+        header("Location: ../templates/dashboard_admin.php");
     } else {
         echo "Login gagal. <a href='../templates/login.php'>Coba lagi</a>";
     }
