@@ -12,6 +12,7 @@
         $_SESSION['admin'] = $data['username'];
         header("Location: ../templates/dashboard_admin.php");
     } else {
-        echo "Login gagal. <a href='../templates/login.php'>Coba lagi</a>";
+          header("Location: ../templates/login.php?error=1");
+          exit;
     }
 ?>

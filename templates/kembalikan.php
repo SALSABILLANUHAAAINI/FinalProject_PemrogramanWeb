@@ -37,25 +37,26 @@ ob_start(); // Mulai buffering
     <input type="hidden" name="tanggal" value="<?= date('Y-m-d') ?>">
     <input type="text" value="<?= date('Y-m-d') ?>" disabled>
 
-    <table class="tabel-barang" style="margin-top:1rem;">
-        <thead>
-            <tr>
-                <th>Pilih</th><th>Nama</th><th>Stok</th><th>Kondisi</th><th>Jumlah</th><th>Keterangan</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php while ($row = mysqli_fetch_assoc($query)): ?>
-            <tr>
-                <td><input type="checkbox" class="cb-barang" id="cb_<?= $row['id'] ?>" name="barang_id[]" value="<?= $row['id'] ?>"></td>
-                <td><?= htmlspecialchars($row['nama_barang']) ?></td>
-                <td><?= $row['stok'] ?></td>
-                <td><?= htmlspecialchars($row['kondisi']) ?></td>
-                <td><input type="number" name="jumlah[<?= $row['id'] ?>]" id="jumlah_<?= $row['id'] ?>" class="jumlah-input" min="1" style="display:none;"></td>
-                <td><input type="text" name="keterangan[<?= $row['id'] ?>]" id="ket_<?= $row['id'] ?>" class="keterangan-input" style="display:none;"></td>
-            </tr>
-            <?php endwhile; ?>
-        </tbody>
-    </table>
+    <div class="card-container">
+        <?php while ($row = mysqli_fetch_assoc($query)): ?>
+            <div class="card">
+                <label>
+                    <input type="checkbox" class="cb-barang" id="cb_<?= $row['id'] ?>" name="barang_id[]" value="<?= $row['id'] ?>">
+                    <strong><?= htmlspecialchars($row['nama_barang']) ?></strong>
+                </label>
+                <div>Stok: <?= $row['stok'] ?></div>
+                <div>Kondisi: <?= htmlspecialchars($row['kondisi']) ?></div>
+                <div class="input-wrapper">
+                    <label>Jumlah:</label>
+                    <input type="number" name="jumlah[<?= $row['id'] ?>]" id="jumlah_<?= $row['id'] ?>" class="jumlah-input" min="1" style="display:none;">
+                </div>
+                <div class="input-wrapper">
+                    <label>Keterangan:</label>
+                    <input type="text" name="keterangan[<?= $row['id'] ?>]" id="ket_<?= $row['id'] ?>" class="keterangan-input" style="display:none;">
+                </div>
+            </div>
+        <?php endwhile; ?>
+    </div>
 
     <button type="submit" style="margin-top: 1.5rem;">Proses Pengembalian</button>
 </form>
@@ -116,9 +117,9 @@ ob_start(); // Mulai buffering
         document.getElementById('pengembalianForm').addEventListener('submit', function () {
             const selections = JSON.parse(localStorage.getItem(storageKey) || '{}');
             for (const id in selections) {
-                this.innerHTML += <input type="hidden" name="barang_id[]" value="${id}">;
-                this.innerHTML += <input type="hidden" name="jumlah[${id}]" value="${selections[id].jumlah}">;
-                this.innerHTML += <input type="hidden" name="keterangan[${id}]" value="${selections[id].keterangan}">;
+                this.innerHTML += `<input type="hidden" name="barang_id[]" value="${id}">`;
+                this.innerHTML += `<input type="hidden" name="jumlah[${id}]" value="${selections[id].jumlah}">`;
+                this.innerHTML += `<input type="hidden" name="keterangan[${id}]" value="${selections[id].keterangan}">`;
             }
             localStorage.removeItem(storageKey);
         });

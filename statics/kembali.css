@@ -1,0 +1,106 @@
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+table th,
+table td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+table th {
+    background-color: #f0f0f0;
+    color: #333;
+    font-weight: 600;
+}
+
+table tr:nth-child(even) {
+    background-color: #fafafa;
+}
+
+table tr:hover {
+    background-color: #e0f7fa;
+}
+
+/* Style tombol submit */
+button[type="submit"] {
+    background-color: #007BFF;
+    border: none;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 15px;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Style input jumlah dan keterangan */
+.jumlah-input,
+.keterangan-input {
+    padding: 5px 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    box-sizing: border-box;
+}
+
+/* Style checkbox */
+.cb-barang {
+    cursor: pointer;
+    width: 18px;
+    height: 18px;
+}
+
+/* Style search form */
+form[method="GET"] {
+    margin-bottom: 15px;
+}
+
+form[method="GET"] input[type="text"] {
+    padding: 8px 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 250px;
+    box-sizing: border-box;
+}
+
+form[method="GET"] button {
+    padding: 8px 15px;
+    font-size: 1rem;
+    border: none;
+    background-color: #28a745;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form[method="GET"] button:hover {
+    background-color: #1e7e34;
+}
+
+/* Style pesan error */
+.error-box {
+    color: #a94442;
+    background-color: #f2dede;
+    padding: 12px 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    border: 1px solid #ebccd1;
+}
+
+.error-box ul {
+    margin: 0;
+    padding-left: 20px;
+}

@@ -1,98 +1,250 @@
+:root {
+    --dark-green: #485935;
+    --olive-green: #93A267;
+    --mint-green: #CADBB7;
+    --light-bg: #FBFBFB;
+    --white: #ffffff;
+}
+
+/* RESET */
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
 body,
 html {
-    font-family: 'Poppins', sans-serif;
-    height: 100vh;
-    overflow: hidden;
-    background-image: url('../media/rakbuku.jpg');
-    /* Gambar jadi background */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(to right, var(--mint-green), var(--light-bg));
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .container {
-    display: flex;
-    height: 100vh;
-    width: 100%;
+    position: relative;
+    width: 900px;
+    height: 500px;
+    background-color: var(--white);
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
 }
 
-/* Kiri: Form Login */
-.left {
-    flex: 1;
-    background-color: #CADBB7;
-    /* semi transparan putih */
+/* FORM CONTAINERS */
+.form-container {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 60px;
+    text-align: center;
+    transition: all 0.6s ease-in-out;
+}
+
+/* LOGIN (default visible) */
+.sign-in-container {
+    left: 0;
+    z-index: 2;
+}
+
+/* REGISTER (hidden until active) */
+.sign-up-container {
+    left: 0;
+    opacity: 0;
+    z-index: 1;
+}
+
+.container.right-panel-active .sign-in-container {
+    opacity: 0;
+    z-index: 1;
+}
+
+.container.right-panel-active .sign-up-container {
+    opacity: 1;
+    z-index: 2;
+    transform: translateX(100%);
+}
+
+/* OVERLAY */
+.overlay-container {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    transition: transform 0.6s ease-in-out;
+    z-index: 100;
+}
+
+.overlay {
+    background: linear-gradient(135deg, var(--dark-green) 30%, var(--olive-green) 70%);
+    color: var(--white);
+    position: relative;
+    left: -100%;
+    height: 100%;
+    width: 200%;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-top-right-radius: 60px;
-    border-bottom-right-radius: 60px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+    transition: transform 0.6s ease-in-out;
 }
 
-.login-box {
-    width: 80%;
-    max-width: 350px;
+.container.right-panel-active .overlay-container {
+    transform: translateX(-100%);
 }
 
-.login-box h2 {
-    margin-bottom: 20px;
-    color: #3e4b2d;
+.container.right-panel-active .overlay {
+    transform: translateX(50%);
+}
+
+/* OVERLAY PANEL ISI */
+.overlay-panel {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 40px;
     text-align: center;
 }
 
-.login-box label {
-    display: block;
-    margin-top: 10px;
-    color: #3e4b2d;
-    font-weight: 500;
+.overlay-left {
+    transform: translateX(-20%);
+    left: 0;
+    transition: transform 0.6s ease-in-out;
 }
 
-.login-box input {
+.overlay-right {
+    right: 0;
+    transform: translateX(0);
+    transition: transform 0.6s ease-in-out;
+}
+
+.container.right-panel-active .overlay-left {
+    transform: translateX(0);
+}
+
+.container.right-panel-active .overlay-right {
+    transform: translateX(20%);
+}
+
+.popup-error {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    padding: 10px;
-    margin-top: 5px;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.popup-content {
+    background: white;
+    padding: 2rem 3rem;
     border-radius: 10px;
-    border: 1px solid #ccc;
-    background-color: #fff;
-    color: #3e4b2d;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.3s ease-in-out;
 }
 
-.link {
-    display: inline-block;
-    margin-top: 10px;
-    font-size: 0.9rem;
-    color: #93A267;
-    text-decoration: none;
+.popup-content p {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    color: var(--dark-green);
 }
 
-.link:hover {
-    text-decoration: underline;
-}
-
-.login-box button {
-    width: 100%;
-    padding: 10px;
-    margin-top: 20px;
-    background-color: #4b5d30;
+.popup-content button {
+    background-color: var(--dark-green);
     color: white;
     border: none;
-    border-radius: 10px;
-    font-weight: bold;
+    padding: 0.6rem 1.2rem;
+    border-radius: 5px;
     cursor: pointer;
+    font-weight: bold;
 }
 
-.login-box button:hover {
-    background-color: #93A267;
-    color: #3e4b2d;
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
-/* Kanan: Kosong tapi tetap ada untuk layout */
-.right {
-    flex: 1;
+
+/* INPUT & BUTTON */
+input {
+    background-color: var(--light-bg);
+    border: none;
+    padding: 14px 18px;
+    margin: 10px 0;
+    width: 100%;
+    border-radius: 10px;
+    font-size: 14px;
+    color: var(--dark-green);
+}
+
+button {
+    border-radius: 25px;
+    border: 1px solid var(--dark-green);
+    background-color: var(--dark-green);
+    color: var(--white);
+    font-size: 15px;
+    font-weight: bold;
+    padding: 12px 45px;
+    margin-top: 12px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: var(--olive-green);
+}
+
+button.ghost {
+    background-color: transparent;
+    border-color: var(--white);
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        width: 100%;
+        flex-direction: column;
+        height: auto;
+        border-radius: 0;
+    }
+
+    .form-container,
+    .overlay-container {
+        width: 100%;
+        position: relative;
+    }
+
+    .overlay {
+        border-radius: 0;
+        flex-direction: column;
+    }
+
+    .overlay-panel {
+        width: 100%;
+    }
 }

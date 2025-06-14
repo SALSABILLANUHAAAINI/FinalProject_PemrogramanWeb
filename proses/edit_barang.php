@@ -2,32 +2,41 @@
 include '../config/koneksi.php';
 
 $id = $_POST['id'];
-$nama = $_POST['nama'];
-$stok_awal_baru = (int)$_POST['stok'];
-$kondisi = $_POST['kondisi'];
+$nama = mysqli_real_escape_string($conn, $_POST['nama']);
+$stok = (int) $_POST['stok'];
+$kondisi = mysqli_real_escape_string($conn, $_POST['kondisi']);
 
-// Ambil stok lama dan stok_awal lama
-$result = mysqli_query($conn, "SELECT stok, stok_awal FROM barang WHERE id = $id");
-$data_lama = mysqli_fetch_assoc($result);
+$gambarBaru = $_FILES['gambar']['name'];
+$tmpGambar = $_FILES['gambar']['tmp_name'];
 
-$stok_lama = (int)$data_lama['stok'];
-$stok_awal_lama = (int)$data_lama['stok_awal'];
+if ($gambarBaru) {
+    $namaGambarBaru = time() . '_' . basename($gambarBaru);
+    $tujuan = "../uploads/$namaGambarBaru";
 
-// Hitung jumlah barang yang sedang dipinjam
-$dipinjam = $stok_awal_lama - $stok_lama;
+    if (move_uploaded_file($tmpGambar, $tujuan)) {
+        // Ambil nama gambar lama
+        $old = mysqli_fetch_assoc(mysqli_query($conn, "SELECT gambar FROM barang WHERE id = $id"));
+        $gambarLama = $old['gambar'];
 
-// Hitung stok baru (tidak boleh negatif)
-$stok_baru = $stok_awal_baru - $dipinjam;
-if ($stok_baru < 0) $stok_baru = 0;
+        // Hapus gambar lama (jika ada dan bukan default)
+        if ($gambarLama && file_exists("../uploads/$gambarLama")) {
+            unlink("../uploads/$gambarLama");
+        }
 
-// Update ke database
-mysqli_query($conn, "UPDATE barang SET 
-    nama_barang = '$nama', 
-    stok_awal = $stok_awal_baru,
-    stok = $stok_baru, 
-    kondisi = '$kondisi' 
-WHERE id = $id");
+        // Update dengan gambar baru
+        $query = "UPDATE barang SET nama_barang='$nama', stok=$stok, kondisi='$kondisi', gambar='$namaGambarBaru' WHERE id=$id";
+    } else {
+        echo "Gagal upload gambar";
+        exit;
+    }
+} else {
+    // Tidak ada gambar baru diupload
+    $query = "UPDATE barang SET nama_barang='$nama', stok=$stok, kondisi='$kondisi' WHERE id=$id";
+}
 
-header("Location: ../templates/dataBarang.php?update=success");
+if (mysqli_query($conn, $query)) {
+    header("Location: ../admin/dataBarang.php");
+} else {
+    echo "Gagal update data!";
+}
 ?>
-

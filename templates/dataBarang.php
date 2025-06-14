@@ -45,18 +45,26 @@
 
 <h3>Data Barang</h3>
 <table>
-    <tr><th>Nama</th><th>Stok</th><th>Kondisi</th><th>Aksi</th></tr>
+    <tr>
+    <th>Nama</th>
+    <th>Stok</th>
+    <th>Kondisi</th>
+    <th>Gambar</th>
+    <th>Aksi</th>
+    </tr>
     <?php while($row = mysqli_fetch_assoc($query)): ?>
-        <tr>
-            <td><?= htmlspecialchars($row['nama_barang']) ?></td>
-            <td><?= $row['stok_awal'] ?></td>
-            <td><?= htmlspecialchars($row['kondisi']) ?></td>
-            <td>
-                <a href='dataBarang.php?edit=<?= $row['id'] ?>'>Edit</a> |
-                <a href='../proses/hapus_barang.php?id=<?= $row['id'] ?>' onclick="return confirm('Yakin hapus?')">Hapus</a>
-            </td>
-        </tr>
-    <?php endwhile; ?>
+    <tr>
+        <td><?= htmlspecialchars($row['nama_barang']) ?></td>
+        <td><?= $row['stok'] ?></td>
+        <td><?= htmlspecialchars($row['kondisi']) ?></td>
+        <td><img src="../uploads/<?= htmlspecialchars($row['gambar']) ?>" width="80"></td>
+        <td>
+            <a href='dataBarang.php?edit=<?= $row['id'] ?>'>Edit</a> |
+            <a href='../proses/hapus_barang.php?id=<?= $row['id'] ?>' onclick="return confirm('Yakin hapus?')">Hapus</a>
+        </td>
+    </tr>
+<?php endwhile; ?>
+
 </table>
 
 <div>
@@ -71,15 +79,18 @@
   <div class="modal-content">
     <span class="close" onclick="closeModal()">&times;</span>
     <h3>Tambah Barang</h3>
-    <form action="../proses/tambah_barang.php" method="POST">
-        <label>Nama Barang:</label><br>
-        <input type="text" name="nama" required><br>
-        <label>Stok:</label><br>
-        <input type="number" name="stok" required><br>
-        <label>Kondisi:</label><br>
-        <input type="text" name="kondisi"><br><br>
-        <button type="submit">Simpan</button>
-    </form>
+    <form action="../proses/tambah_barang.php" method="POST" enctype="multipart/form-data">
+    <label>Nama Barang:</label><br>
+    <input type="text" name="nama" required><br>
+    <label>Stok:</label><br>
+    <input type="number" name="stok" required><br>
+    <label>Kondisi:</label><br>
+    <input type="text" name="kondisi"><br>
+    <label>Gambar Barang:</label><br>
+    <input type="file" name="gambar" accept="image/*" required><br><br>
+    <button type="submit">Simpan</button>
+</form>
+
   </div>
 </div>
 
@@ -89,16 +100,27 @@
   <div class="modal-content">
     <span class="close" onclick="window.location.href='dataBarang.php'">&times;</span>
     <h3>Edit Barang</h3>
-    <form action="../proses/edit_barang.php" method="POST">
-        <input type="hidden" name="id" value="<?= $editData['id'] ?>">
-        <label>Nama Barang:</label><br>
-        <input type="text" name="nama" value="<?= htmlspecialchars($editData['nama_barang']) ?>" required><br>
-        <label>Stok:</label><br>
-        <input type="number" name="stok" value="<?= $editData['stok'] ?>" required><br>
-        <label>Kondisi:</label><br>
-        <input type="text" name="kondisi" value="<?= htmlspecialchars($editData['kondisi']) ?>"><br><br>
-        <button type="submit">Update</button>
-    </form>
+    <form action="../proses/edit_barang.php" method="POST" enctype="multipart/form-data">
+    <input type="hidden" name="id" value="<?= $editData['id'] ?>">
+    
+    <label>Nama Barang:</label><br>
+    <input type="text" name="nama" value="<?= htmlspecialchars($editData['nama_barang']) ?>" required><br>
+    
+    <label>Stok:</label><br>
+    <input type="number" name="stok" value="<?= $editData['stok'] ?>" required><br>
+    
+    <label>Kondisi:</label><br>
+    <input type="text" name="kondisi" value="<?= htmlspecialchars($editData['kondisi']) ?>"><br>
+    
+    <label>Gambar Saat Ini:</label><br>
+    <img src="../uploads/<?= htmlspecialchars($editData['gambar']) ?>" width="100"><br>
+
+    <label>Ganti Gambar (Opsional):</label><br>
+    <input type="file" name="gambar" accept="image/*"><br><br>
+
+    <button type="submit">Update</button>
+</form>
+
   </div>
 </div>
 <?php endif; ?>
