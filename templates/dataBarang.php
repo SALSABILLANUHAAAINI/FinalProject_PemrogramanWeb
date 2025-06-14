@@ -49,7 +49,7 @@
     <?php while($row = mysqli_fetch_assoc($query)): ?>
         <tr>
             <td><?= htmlspecialchars($row['nama_barang']) ?></td>
-            <td><?= $row['stok'] ?></td>
+            <td><?= $row['stok_awal'] ?></td>
             <td><?= htmlspecialchars($row['kondisi']) ?></td>
             <td>
                 <a href='dataBarang.php?edit=<?= $row['id'] ?>'>Edit</a> |
