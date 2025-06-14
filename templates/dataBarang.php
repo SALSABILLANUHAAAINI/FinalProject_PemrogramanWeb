@@ -101,26 +101,28 @@
     <span class="close" onclick="window.location.href='dataBarang.php'">&times;</span>
     <h3>Edit Barang</h3>
     <form action="../proses/edit_barang.php" method="POST" enctype="multipart/form-data">
-    <input type="hidden" name="id" value="<?= $editData['id'] ?>">
-    
-    <label>Nama Barang:</label><br>
-    <input type="text" name="nama" value="<?= htmlspecialchars($editData['nama_barang']) ?>" required><br>
-    
-    <label>Stok:</label><br>
-    <input type="number" name="stok" value="<?= $editData['stok'] ?>" required><br>
-    
-    <label>Kondisi:</label><br>
-    <input type="text" name="kondisi" value="<?= htmlspecialchars($editData['kondisi']) ?>"><br>
-    
-    <label>Gambar Saat Ini:</label><br>
-    <img src="../uploads/<?= htmlspecialchars($editData['gambar']) ?>" width="100"><br>
+        <input type="hidden" name="id" value="<?= $editData['id'] ?>">
+        <input type="hidden" name="stok_awal" value="<?= $editData['stok_awal'] ?>">
 
-    <label>Ganti Gambar (Opsional):</label><br>
-    <input type="file" name="gambar" accept="image/*"><br><br>
+        <label>Nama Barang:</label><br>
+        <input type="text" name="nama" value="<?= htmlspecialchars($editData['nama_barang']) ?>" required><br>
 
-    <button type="submit">Update</button>
-</form>
+        <label>Stok Sekarang:</label><br>
+        <input type="number" name="stok" value="<?= $editData['stok'] ?>" required><br>
 
+        <p><strong>Stok Awal:</strong> <?= $editData['stok_awal'] ?></p>
+
+        <label>Kondisi:</label><br>
+        <input type="text" name="kondisi" value="<?= htmlspecialchars($editData['kondisi']) ?>"><br>
+
+        <label>Gambar Saat Ini:</label><br>
+        <img src="../uploads/<?= htmlspecialchars($editData['gambar']) ?>" width="100"><br>
+
+        <label>Ganti Gambar (Opsional):</label><br>
+        <input type="file" name="gambar" accept="image/*"><br><br>
+
+        <button type="submit">Update</button>
+    </form>
   </div>
 </div>
 <?php endif; ?>
