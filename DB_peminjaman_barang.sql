@@ -50,10 +50,10 @@ VALUES ('admin', 'admin123', 'admin');
 -- 6. INSERT DATA BARANG
 -- =========================
 INSERT INTO barang (id, nama_barang, stok, kondisi, stok_awal, gambar) VALUES
-(1, 'Proyektor Epson', 9, 'Baik', 9, '1749912481_proyektor.jpg'),
-(2, 'Laptop ASUS', 4, 'Baru', 3, '1749913370_laptop.jpeg'),
-(3, 'Speaker Portable', 2, 'Baik', 7, '1749915095_speakter.jpg'),
-(4, 'Kamera DSLR', 1, 'Baik', 6, '1749915108_kamera.jpg'),
+(1, 'Proyektor Epson', 10, 'Baik', 10, '1749912481_proyektor.jpg'),
+(2, 'Laptop ASUS', 5, 'Baru', 5, '1749913370_laptop.jpeg'),
+(3, 'Speaker Portable', 3, 'Baik', 3, '1749915095_speakter.jpg'),
+(4, 'Kamera DSLR', 5, 'Baik', 5, '1749915108_kamera.jpg'),
 (6, 'Kursi', 8, 'Baik', 8, '684d965b3450a_kursi.webp'),
 (7, 'Spidol', 10, 'Baru', 10, '684d96fc9b3de_spidol.jpg'),
 (8, 'Penghapus', 8, 'Baru', 8, '684d971ebd719_penghapus.jpg');
