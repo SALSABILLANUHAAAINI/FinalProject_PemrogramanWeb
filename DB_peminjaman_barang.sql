@@ -1,7 +1,12 @@
--- DATABASE NAME --
-CREATE DATABASE peminjaman_barang
+-- =========================
+-- 1. CREATE DATABASE
+-- =========================
+CREATE DATABASE peminjaman_barang;
+USE peminjaman_barang;
 
--- CREATE TABEL--
+-- =========================
+-- 2. TABEL USERS
+-- =========================
 CREATE TABLE users (
   id INT AUTO_INCREMENT PRIMARY KEY,
   username VARCHAR(50) NOT NULL UNIQUE,
@@ -9,15 +14,21 @@ CREATE TABLE users (
   role ENUM('admin') DEFAULT 'admin'
 );
 
+-- =========================
+-- 3. TABEL BARANG
+-- =========================
 CREATE TABLE barang (
   id INT AUTO_INCREMENT PRIMARY KEY,
   nama_barang VARCHAR(100) NOT NULL,
   stok INT NOT NULL DEFAULT 0,
-  kondisi VARCHAR(100)
+  kondisi VARCHAR(100),
+  stok_awal INT DEFAULT 0,
+  gambar VARCHAR(255)
 );
-ALTER TABLE barang ADD COLUMN stok_awal INT DEFAULT 0; -- Run terpisah karena variabel tambahan baru --
 
-
+-- =========================
+-- 4. TABEL TRANSAKSI
+-- =========================
 CREATE TABLE transaksi (
   id INT AUTO_INCREMENT PRIMARY KEY,
   barang_id INT,
@@ -25,28 +36,24 @@ CREATE TABLE transaksi (
   tanggal DATE,
   keterangan TEXT,
   surat_path VARCHAR(255),
+  jumlah INT NOT NULL DEFAULT 0,
   FOREIGN KEY (barang_id) REFERENCES barang(id)
 );
-ALTER TABLE transaksi ADD COLUMN jumlah INT NOT NULL DEFAULT 0; -- Run terpisah karena variabel tambahan baru --
 
--- DATA DUMMY --
--- Admin User
+-- =========================
+-- 5. INSERT USER ADMIN
+-- =========================
 INSERT INTO users (username, PASSWORD, role)
-VALUES 
-('admin', 'admin123', 'admin123');
+VALUES ('admin', 'admin123', 'admin');
 
--- Barang Dummy
-INSERT INTO barang (nama_barang, stok, kondisi) VALUES
-('Proyektor Epson', 3, 'Baik'),
-('Laptop ASUS', 5, 'Baru'),
-('Speaker Portable', 2, 'Baik'),
-('Kamera DSLR', 1, 'Baik'),
-('Meja Lipat', 10, 'Cukup');
-
--- Transaksi Dummy
-INSERT INTO transaksi (barang_id, jenis, tanggal, keterangan, surat_path) VALUES
-(1, 'peminjaman', '2025-05-20', 'Digunakan untuk presentasi kelas 12 IPA', NULL),
-(2, 'peminjaman', '2025-05-21', 'Laptop untuk lomba coding', NULL),
-(2, 'pengembalian', '2025-05-22', 'Sudah dikembalikan ke ruang TU', NULL),
-(3, 'peminjaman', '2025-05-22', 'Digunakan untuk kegiatan OSIS', NULL);
-
+-- =========================
+-- 6. INSERT DATA BARANG
+-- =========================
+INSERT INTO barang (id, nama_barang, stok, kondisi, stok_awal, gambar) VALUES
+(1, 'Proyektor Epson', 9, 'Baik', 9, '1749912481_proyektor.jpg'),
+(2, 'Laptop ASUS', 4, 'Baru', 3, '1749913370_laptop.jpeg'),
+(3, 'Speaker Portable', 2, 'Baik', 7, '1749915095_speakter.jpg'),
+(4, 'Kamera DSLR', 1, 'Baik', 6, '1749915108_kamera.jpg'),
+(6, 'Kursi', 8, 'Baik', 8, '684d965b3450a_kursi.webp'),
+(7, 'Spidol', 10, 'Baru', 10, '684d96fc9b3de_spidol.jpg'),
+(8, 'Penghapus', 8, 'Baru', 8, '684d971ebd719_penghapus.jpg');
