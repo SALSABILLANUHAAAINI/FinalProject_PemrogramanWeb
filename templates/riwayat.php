@@ -11,8 +11,6 @@ $jenis = isset($_GET['jenis']) ? $_GET['jenis'] : 'peminjaman';
 ob_start();
 ?>
 
-<h2>Riwayat Transaksi Barang</h2>
-
 <div class="riwayat-nav">
     <a href="?jenis=peminjaman" class="<?= $jenis === 'peminjaman' ? 'active' : '' ?>">Peminjaman</a>
     <a href="?jenis=pengembalian" class="<?= $jenis === 'pengembalian' ? 'active' : '' ?>">Pengembalian</a>
@@ -53,6 +51,6 @@ ob_start();
 <?php
 $content = ob_get_clean();
 $title = "Riwayat Transaksi";
-$page_title = "Riwayat";
+$page_title = "Riwayat Transaksi Barang";
 $extra_css = '<link rel="stylesheet" href="../statics/riwayat.css">';
 include 'base.php';
