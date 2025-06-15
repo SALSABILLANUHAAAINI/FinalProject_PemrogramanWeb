@@ -14,8 +14,6 @@ $query = mysqli_query($conn, "SELECT * FROM barang $search_sql");
 ob_start(); // Mulai buffering
 ?>
 
-<h2>Form Pengembalian Barang</h2>
-
 <?php if (isset($_SESSION['error_pengembalian'])): ?>
     <div style="color: red; background-color: #ffe0e0; padding: 10px; margin-bottom: 10px; border-radius: 5px;">
         <strong>Terjadi Kesalahan Pengembalian:</strong>
