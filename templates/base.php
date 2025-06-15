@@ -11,6 +11,8 @@ if (session_status() == PHP_SESSION_NONE) session_start();
   <link rel="stylesheet" href="../statics/dashboard.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+  <?php if (isset($extra_css)) echo $extra_css; ?>
 </head>
 <body>
 
