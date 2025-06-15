@@ -32,8 +32,6 @@
     ob_start(); // Start content buffer
 ?>
 
-<h2>Selamat datang, <?= $_SESSION['admin']; ?></h2>
-
 <form method="GET" action="">
     <input type="text" name="cari" placeholder="Cari barang..." value="<?= htmlentities($search); ?>">
     <button type="submit">Cari</button>
