@@ -23,8 +23,6 @@
     ob_start(); // start content buffering
 ?>
 
-<h2>Selamat datang, <?= $_SESSION['admin']; ?></h2>
-
 <div class="stats-container">
   <div class="stat-box blue">
     <h2><?= $total_barang ?></h2>
@@ -56,5 +54,5 @@
 <?php
 $content = ob_get_clean(); // ambil hasil buffer
 $title = "Dashboard Admin";
-$page_title = "Dashboard";
+$page_title = "Selamat datang, " . htmlspecialchars($_SESSION['admin']);
 include 'base.php';
