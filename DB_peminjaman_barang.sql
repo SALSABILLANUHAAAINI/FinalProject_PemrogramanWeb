@@ -43,7 +43,7 @@ CREATE TABLE transaksi (
 -- =========================
 -- 5. INSERT USER ADMIN
 -- =========================
-INSERT INTO users (username, PASSWORD, role)
+INSERT INTO users (username, password, role)
 VALUES ('admin', 'admin123', 'admin');
 
 -- =========================
